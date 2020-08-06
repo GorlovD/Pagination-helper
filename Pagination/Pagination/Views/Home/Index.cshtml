@@ -1,0 +1,27 @@
+﻿@model Pagination.Helpers.IndexViewModel
+@using Pagination.Helpers
+@{
+    ViewBag.Title = "Home Page";
+}
+<table class="table">
+    <caption>Всего @Model.PageInfo.TotalItems  абонентов</caption>
+
+
+    <tr>
+        <th><p>Фамилия</p></th>
+        <th><p>Телефон</p></th>
+    </tr>
+    @foreach (var item in Model.Phones)
+    {
+        <tr>
+            <td>@item.Fam</td>
+            <td>@item.Tel</td>
+       
+        </tr>
+    }
+</table>
+<br />
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+    (@Model.PageInfo.PageNumber)
+</div>
